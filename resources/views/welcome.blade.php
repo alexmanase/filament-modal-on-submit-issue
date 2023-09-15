@@ -21,7 +21,7 @@
     </head>
     <body>
 
-        {{-- <livewire:list-products /> --}}
+        <livewire:list-products />
     
         @filamentScripts
         @vite('resources/js/app.js')

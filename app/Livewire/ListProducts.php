@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Filament\Forms\TextForm;
-use App\Models\Text;
+use App\Filament\Forms\ProductForm;
+use App\Models\Product;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Actions\EditAction;
@@ -12,33 +12,30 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Livewire\Component;
-use RalphJSmit\Helpers\Livewire\CanBeRefreshed;
 
 class ListProducts extends Component implements HasForms, HasTable
 {
+    use InteractsWithForms;
     use InteractsWithTable;
-    use InteractsWithForms; 
 
     public function table(Table $table)
     {
         return $table
             ->query(Product::query()->latest())
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('name'),
             ])
             ->filters([
                 // ...
             ])
             ->actions([
                 EditAction::make('edit')
-                    ->form([
-                        TextInput::make('name')
-                    ])
+                    ->form([ProductForm::make()])
                     ->modalSubmitActionLabel('Save'),
             ])
             ->bulkActions([
                 // ...
-            ]);   
+            ]);
     }
 
     public function render()
