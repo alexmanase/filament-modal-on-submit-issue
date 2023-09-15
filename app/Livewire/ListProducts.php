@@ -2,17 +2,17 @@
 
 namespace App\Livewire;
 
+use App\Filament\Forms\TextForm;
+use App\Models\Text;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use App\Models\Product;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Actions\EditAction;
+use RalphJSmit\Helpers\Livewire\CanBeRefreshed;
 
 class ListProducts extends Component implements HasForms, HasTable
 {
